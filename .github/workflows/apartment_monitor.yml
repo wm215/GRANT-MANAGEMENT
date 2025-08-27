@@ -1,0 +1,70 @@
+name: ARO Apartment Monitor
+
+on:
+  schedule:
+    # Run every hour at 5 minutes past the hour
+    - cron: '5 * * * *'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  monitor-apartments:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create config from secrets
+        run: |
+          cat > src/config.py << EOF
+          # Configuration generated from GitHub secrets
+          EMAIL_SETTINGS = {
+              'smtp_server': '${{ secrets.SMTP_SERVER }}',
+              'smtp_port': ${{ secrets.SMTP_PORT }},
+              'smtp_user': '${{ secrets.SMTP_USER }}',
+              'smtp_password': '${{ secrets.SMTP_PASSWORD }}',
+          }
+          
+          NOTIFICATION_SETTINGS = {
+              'recipient_email': '${{ secrets.RECIPIENT_EMAIL }}',
+              'send_email': True,
+              'send_sms': False,
+          }
+          
+          MONITORING_SETTINGS = {
+              'check_interval_minutes': 60,
+              'timeout_seconds': 30,
+              'max_retries': 3,
+          }
+          
+          SMS_SETTINGS = {
+              'provider': 'twilio',
+              'account_sid': '${{ secrets.TWILIO_SID }}',
+              'auth_token': '${{ secrets.TWILIO_TOKEN }}',
+              'from_number': '${{ secrets.TWILIO_FROM }}',
+              'to_number': '${{ secrets.TWILIO_TO }}',
+          }
+          EOF
+
+      - name: Run apartment monitor
+        run: |
+          cd src
+          python apartment_scraper.py
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: monitor-logs
+          path: src/apartment_monitor.log
+          retention-days: 7

@@ -1,0 +1,36 @@
+"""
+Configuration settings for ARO Apartment Monitor
+
+Copy this file to config.py and update with your actual settings.
+"""
+
+# Email notification settings
+EMAIL_SETTINGS = {
+    'smtp_server': 'smtp.gmail.com',  # Gmail SMTP server
+    'smtp_port': 587,
+    'smtp_user': 'your-email@gmail.com',  # Your email address
+    'smtp_password': 'your-app-password',  # Gmail app password (not regular password)
+}
+
+# Notification preferences
+NOTIFICATION_SETTINGS = {
+    'recipient_email': 'recipient@example.com',  # Who should receive notifications
+    'send_email': True,  # Enable/disable email notifications
+    'send_sms': False,   # Enable/disable SMS notifications (requires additional setup)
+}
+
+# Monitoring settings
+MONITORING_SETTINGS = {
+    'check_interval_minutes': 60,  # How often to check (for local runs)
+    'timeout_seconds': 30,         # HTTP request timeout
+    'max_retries': 3,              # Number of retries for failed requests
+}
+
+# SMS settings (optional - requires Twilio or similar service)
+SMS_SETTINGS = {
+    'provider': 'twilio',  # SMS provider
+    'account_sid': 'your-twilio-sid',
+    'auth_token': 'your-twilio-token',
+    'from_number': '+1234567890',  # Your Twilio phone number
+    'to_number': '+1234567890',    # Recipient phone number
+}
