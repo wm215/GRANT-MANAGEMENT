@@ -15,8 +15,8 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 from typing import List, Dict, Optional
 import smtplib
-from email.mime.text import MimeText
-from email.mime.multipart import MimeMultipart
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import os
 import sys
 
@@ -169,12 +169,12 @@ This alert was generated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
     def send_email(self, subject: str, body: str):
         """Send email notification"""
         try:
-            msg = MimeMultipart()
+            msg = MIMEMultipart()
             msg['From'] = EMAIL_SETTINGS['smtp_user']
             msg['To'] = NOTIFICATION_SETTINGS['recipient_email']
             msg['Subject'] = subject
             
-            msg.attach(MimeText(body, 'plain'))
+            msg.attach(MIMEText(body, 'plain'))
             
             server = smtplib.SMTP(EMAIL_SETTINGS['smtp_server'], EMAIL_SETTINGS['smtp_port'])
             server.starttls()
