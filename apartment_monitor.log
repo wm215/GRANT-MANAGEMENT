@@ -1,0 +1,48 @@
+2025-08-27 00:38:54,303 - apartment_monitor.notifications - WARNING - Email configuration incomplete. Email notifications disabled.
+2025-08-27 00:38:54,304 - apartment_monitor.notifications - WARNING - SMS configuration incomplete. SMS notifications disabled.
+2025-08-27 00:39:01,693 - apartment_monitor.notifications - WARNING - Email configuration incomplete. Email notifications disabled.
+2025-08-27 00:39:01,693 - apartment_monitor.notifications - WARNING - SMS configuration incomplete. SMS notifications disabled.
+2025-08-27 00:39:01,693 - apartment_monitor.monitor - INFO - Running single apartment check...
+2025-08-27 00:39:01,693 - apartment_monitor.monitor - INFO - Starting apartment availability check...
+2025-08-27 00:39:01,693 - apartment_monitor.scraper - INFO - Fetching page: https://www.lincolncommonapartments.com/floorplans
+2025-08-27 00:39:01,696 - apartment_monitor.scraper - ERROR - Error fetching page: HTTPSConnectionPool(host='www.lincolncommonapartments.com', port=443): Max retries exceeded with url: /floorplans (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fc42a3b83b0>: Failed to resolve 'www.lincolncommonapartments.com' ([Errno -5] No address associated with hostname)"))
+2025-08-27 00:39:01,696 - apartment_monitor.monitor - ERROR - Check failed: Failed to fetch page content
+2025-08-27 00:39:47,421 - apartment_monitor.notifications - WARNING - Email configuration incomplete. Email notifications disabled.
+2025-08-27 00:39:47,421 - apartment_monitor.notifications - WARNING - SMS configuration incomplete. SMS notifications disabled.
+2025-08-27 00:39:47,422 - apartment_monitor.monitor - INFO - Running single apartment check...
+2025-08-27 00:39:47,422 - apartment_monitor.monitor - INFO - Starting apartment availability check...
+2025-08-27 00:39:47,422 - apartment_monitor.test_utils - INFO - Running mock apartment check...
+2025-08-27 00:39:47,422 - apartment_monitor.test_utils - INFO - Mock check complete. Found 0 apartments
+2025-08-27 00:39:47,422 - apartment_monitor.monitor - INFO - No available ARO one-bedroom apartments found
+2025-08-27 00:39:47,422 - apartment_monitor.monitor - INFO - Running single apartment check...
+2025-08-27 00:39:47,422 - apartment_monitor.monitor - INFO - Starting apartment availability check...
+2025-08-27 00:39:47,422 - apartment_monitor.test_utils - INFO - Running mock apartment check...
+2025-08-27 00:39:47,422 - apartment_monitor.test_utils - INFO - Mock check complete. Found 1 apartments
+2025-08-27 00:39:47,422 - apartment_monitor.monitor - INFO - Found 1 available ARO one-bedroom apartments!
+2025-08-27 00:39:47,422 - apartment_monitor.notifications - INFO - Sending notifications for 1 available apartments
+2025-08-27 00:39:47,423 - apartment_monitor.notifications - WARNING - Email not configured. Skipping email notification.
+2025-08-27 00:39:47,423 - apartment_monitor.notifications - WARNING - SMS not configured. Skipping SMS notification.
+2025-08-27 00:39:47,423 - apartment_monitor.monitor - INFO - Notifications sent - Email: False, SMS: False
+2025-08-27 00:42:08,157 - apartment_monitor.monitor - INFO - Running single apartment check...
+2025-08-27 00:42:08,157 - apartment_monitor.monitor - INFO - Starting apartment availability check...
+2025-08-27 00:42:08,157 - apartment_monitor.test_utils - INFO - Running mock apartment check...
+2025-08-27 00:42:08,157 - apartment_monitor.test_utils - INFO - Mock check complete. Found 0 apartments
+2025-08-27 00:42:08,157 - apartment_monitor.monitor - INFO - No available ARO one-bedroom apartments found
+2025-08-27 00:42:08,157 - apartment_monitor.monitor - INFO - Running single apartment check...
+2025-08-27 00:42:08,158 - apartment_monitor.monitor - INFO - Starting apartment availability check...
+2025-08-27 00:42:08,158 - apartment_monitor.test_utils - INFO - Running mock apartment check...
+2025-08-27 00:42:08,158 - apartment_monitor.test_utils - INFO - Mock check complete. Found 1 apartments
+2025-08-27 00:42:08,158 - apartment_monitor.monitor - INFO - Found 1 available ARO one-bedroom apartments!
+2025-08-27 00:42:08,158 - apartment_monitor.notifications - INFO - Sending notifications for 1 available apartments
+2025-08-27 00:42:08,160 - apartment_monitor.notifications - ERROR - Failed to send email notification: [Errno -5] No address associated with hostname
+2025-08-27 00:42:08,194 - twilio.http_client - INFO - -- BEGIN Twilio API Request --
+2025-08-27 00:42:08,194 - twilio.http_client - INFO - POST Request: https://api.twilio.com/2010-04-01/Accounts/your_twilio_account_sid/Messages.json
+2025-08-27 00:42:08,194 - twilio.http_client - INFO - Headers:
+2025-08-27 00:42:08,194 - twilio.http_client - INFO - Content-Type : application/x-www-form-urlencoded
+2025-08-27 00:42:08,194 - twilio.http_client - INFO - Accept : application/json
+2025-08-27 00:42:08,195 - twilio.http_client - INFO - User-Agent : twilio-python/9.7.1 (Linux x86_64) Python/3.12.3
+2025-08-27 00:42:08,195 - twilio.http_client - INFO - X-Twilio-Client : python-9.7.1
+2025-08-27 00:42:08,195 - twilio.http_client - INFO - Accept-Charset : utf-8
+2025-08-27 00:42:08,195 - twilio.http_client - INFO - -- END Twilio API Request --
+2025-08-27 00:42:08,198 - apartment_monitor.notifications - ERROR - Failed to send SMS notification: HTTPSConnectionPool(host='api.twilio.com', port=443): Max retries exceeded with url: /2010-04-01/Accounts/your_twilio_account_sid/Messages.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fac30e72a80>: Failed to resolve 'api.twilio.com' ([Errno -5] No address associated with hostname)"))
+2025-08-27 00:42:08,198 - apartment_monitor.monitor - INFO - Notifications sent - Email: False, SMS: False
